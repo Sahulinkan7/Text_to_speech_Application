@@ -12,7 +12,8 @@ list_of_files=[
     f"requirements.py",
     "Dockerfile",
     ".dockerignore",
-    "app.py"
+    "app.py",
+    "setup.py",
 ]
 
 

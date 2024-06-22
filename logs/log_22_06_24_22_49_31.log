@@ -1,0 +1,4 @@
+[2024-06-22 22:55:03,609-root] : INFO You are in Home page .
+[2024-06-22 22:55:05,592-django.request] : WARNING Not Found: /favicon.ico
+[2024-06-22 22:56:32,104-root] : INFO You are in Home page .
+[2024-06-22 22:56:33,387-django.request] : WARNING Not Found: /favicon.ico

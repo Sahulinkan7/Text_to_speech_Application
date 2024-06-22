@@ -21,6 +21,7 @@ def get_mp3(request):
     print(data)
     text=data['text']
     tld=data['tld']
+    logging.info(f"data entered by user {text} and accent value {tld}")
     print(text,tld)
     audio_string=TextToSpeechApplication().get_text_to_speech(text=text,accent=tld)
     result=audio_string.decode('utf8')
@@ -29,5 +30,6 @@ def get_mp3(request):
         'text':text,
         'tld':tld
     }
+    logging.info(f"updated data to ui : {newdata}")
     print(newdata)
     return JsonResponse(json.dumps(newdata),content_type="application/json",safe=False)

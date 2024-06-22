@@ -1,6 +1,6 @@
 body,html{
     height: 100%;
-    background-color: rgb(206, 223, 219);
+    background: linear-gradient(180deg, #529cbe, #046572, #cd81e2)
 }
 .container-fluid{
     min-height: 100%;
@@ -10,12 +10,21 @@ body,html{
 label{
     font-weight: bold;
 }
-
+.card{
+    color: white;
+    background: linear-gradient(105deg, #44bbca, #508d76, #d2cfd3)
+}
 .alert-success{
-    background-color: rgb(58, 138, 58);
-    color:white;
+    background-color: #44bbca;
+    color:black;
+    font-weight: bold;
 }
 
+option{
+    background-color: #44bbca;
+    color:rgb(14, 12, 12);
+    font-weight: 2em;
+}
 .alert-error{
     background-color: rgb(175, 46, 46);
     color: white;
@@ -30,13 +39,13 @@ label{
 }
 
 .nav-link{
-    color: rgb(15, 139, 129);
+    color: rgb(2, 31, 28);
     font-weight: bold;
 
 }
 
 .errors{
-    color:rgb(122, 16, 16);
+    color:rgb(105, 6, 6);
     font-weight: 700;
 }
 .active{
@@ -53,7 +62,7 @@ label{
 }
 
 .projectheader{
-    background-color: rgb(2, 126, 84);
-    color:rgb(231, 240, 239);
+    background-color: #44bbca;
+    color:rgb(0, 0, 0);
     font-weight: bold;
 }

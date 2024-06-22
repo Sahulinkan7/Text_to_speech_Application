@@ -1,0 +1,44 @@
+{% extends "text_to_speech_app/baselayout.html" %}
+
+{% block content %}
+    <div class="container">
+        {% if messages %}           
+            {% for message in messages %}
+                <div class="text-center alert alert-primary alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                    {{message}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}             
+        {% endif %}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card shadow p-3 mt-3 text-center">
+                    <form action="" method="post" novalidate>
+                        {% csrf_token %}
+                        {% for field in form %}
+                            {{field.label_tag}} <span class="errors">{{field.errors|striptags}}</span><br>
+                            {{field}} <br><br>
+                        {% endfor %} <br>
+                        <input type="submit" value="Get speech" class="btn form-control btn-primary">
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                
+                <div class="card shadow p-3 mt-3">
+                    <p class="text-center fw-bold">Your speech in accent </p>
+                    <div class="text-center mt-5">
+                        <audio src="" controls>
+                            <source src="your-audio-file.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}
+
+
+
+

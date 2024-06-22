@@ -69,8 +69,9 @@
             })
             .then(function(blob){
                 const audioUrl = URL.createObjectURL(blob);
-                const audio = new Audio(audioUrl);
-                audio.play();
+                 // const audio = new Audio(audioUrl);
+                // audio.play();
+                
                 accent.value=data["tld"]
             })
             .catch(error => {

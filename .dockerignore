@@ -1,0 +1,5 @@
+venv/
+logs/
+README.md
+notebook.ipynb
+.gitignore

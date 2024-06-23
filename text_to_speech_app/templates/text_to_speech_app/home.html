@@ -29,8 +29,8 @@
                         {% endfor %}             
                     {% endif %}
                     <div class="text-center mt-5">
-                        <audio controls>
-                            <source id="audioid" src="" type="audio/mpeg">
+                        <audio id="audioid" controls >
+                            <source  src="" type="audio/mpeg">
                         </audio>
                     </div>
                 </div>
@@ -48,7 +48,20 @@
 {% block custom_js %}
 
     <script>
-        document.querySelector("#getspeech").addEventListener("click",function(){
+        function base64ToBlob(base64, mime) 
+        { 
+            const byteChars = atob(base64); 
+            const byteNumbers = new Array(byteChars.length); 
+            for (let i = 0; i < byteChars.length; i++) 
+            { 
+                byteNumbers[i] = byteChars.charCodeAt(i); 
+            } 
+            const byteArray = new Uint8Array(byteNumbers); 
+            return new Blob([byteArray], {type: mime}); 
+        }
+
+        document.querySelector("#getspeech").addEventListener("click",function(e){
+            e.preventDefault();
             var tld=document.querySelector("#id_tld").value
             var text=document.querySelector("#id_text").value
             var data={
@@ -56,6 +69,7 @@
                 "text":text
             }
             console.log(data)
+            var audio_id=document.getElementById("audioid")
             var accent = document.getElementById("id_tld")
             accent_value=accent.value
             fetch('{% url "get_speech" %}',{
@@ -64,15 +78,21 @@
                 headers: {'Content-Type': 'application/json'}
             })
             .then(function(response){
-                return response.blob()
-                
+                console.log(response)
+                return response.json()
+                               
+            })
+            .then(function(response){
+                return JSON.parse(response)
+            })
+            .then(function(response){
+                console.log("mp3 : ",response.mp3string)
+                return base64ToBlob(response.mp3string, 'audio/mp3');
             })
             .then(function(blob){
                 const audioUrl = URL.createObjectURL(blob);
-                 // const audio = new Audio(audioUrl);
-                // audio.play();
-                
-                accent.value=data["tld"]
+                audio_id.src=audioUrl
+                console.log(audioUrl)
             })
             .catch(error => {
                 console.error('Fetch error:', error);

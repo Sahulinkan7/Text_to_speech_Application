@@ -26,10 +26,6 @@ def get_mp3(request):
     audio_string=TextToSpeechApplication().get_text_to_speech(text=text,accent=tld)
     result=audio_string.decode('utf8')
     newdata={
-        'mp3string':result,
-        'text':text,
-        'tld':tld
+        "mp3string":result,
     }
-    logging.info(f"updated data to ui : {newdata}")
-    print(newdata)
     return JsonResponse(json.dumps(newdata),content_type="application/json",safe=False)
